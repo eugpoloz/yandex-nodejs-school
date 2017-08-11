@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="developer" content="Evgenia Polozova" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Тестовое задание для Школы NodeJS</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="h1">Школа NodeJS</h1>
+    </header>
+    <section class="section">
+      <form id="myForm">
+        <div class="input__container">
+          <label class="input__label" for="fio">ФИО:</label>
+          <input class="input" type="text" name="fio" id="fio" placeholder="Иванов Иван Иванович" />
+          <p class="input__info">Строго три слова.</p>
+        </div>
+
+        <div class="input__container">
+          <label class="input__label" for="email">Email:</label>
+          <input class="input" type="email" name="email" id="email" placeholder="user@yandex.ru" />
+          <p class="input__info">На доменах ya.ru, yandex.ru, yandex.ua, yandex.by, yandex.kz, yandex.com.</p>
+        </div>
+
+        <div class="input__container">
+          <label class="input__label" for="phone">Телефон:</label>
+          <input class="input" type="tel" name="phone" id="phone" placeholder="+7(123)456-78-90" />
+          <p class="input__info">Формат: +7(999)999-99-99. Сумма цифр не должна превышать 30.</p>
+        </div>
+
+        <div class="button__container">
+          <button class="button" type="submit" id="submitButton">Отправить</button>
+        </div>
+      </form>
+    </section>
+    <section class="section">
+      <div class="result" id="resultContainer">
+        Поле для результата работы формы
+      </div>
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>

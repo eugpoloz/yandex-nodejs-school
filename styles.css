@@ -1,0 +1,99 @@
+/* basic styles */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+.h1 {
+  font-size: 24px;
+}
+
+.header,
+.section {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.section {
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+/* input styles */
+.input__container {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.input__label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+.input.input--error {
+  border-color: red;
+}
+
+.input__info {
+  margin: 5px 0 0;
+  font-size: 10px;
+  color: silver;
+}
+
+/* button */
+.button__container {
+  text-align: center;
+}
+
+.button {
+  padding: 5px 5px 4px;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+/* result styles */
+.result {
+  display: none;
+  padding: 15px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px dashed silver;
+  border-radius: 3px;
+}
+
+.result.success {
+  display: block;
+  border-color: darkgreen;
+  color: darkgreen;
+}
+
+.result.error {
+  display: block;
+  border-color: crimson;
+  color: crimson;
+}
+
+.result.progress {
+  border-color: gray;
+  color: gray;
+}
