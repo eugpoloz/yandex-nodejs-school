@@ -102,7 +102,7 @@ const MyForm = {
     }
 
     // check email
-    if (!/^[\w\d\.]*@(?:(?:ya\.ru)|(yandex\.(?:ru|ua|by|com)))/.test(getData.email)) {
+    if (!/^[\w\d\.]*@(?:(?:ya\.ru)|(yandex\.(?:ru|kz|ua|by|com)))/.test(getData.email)) {
       errorFields.push("email");
     }
 
