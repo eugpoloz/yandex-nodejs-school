@@ -82,6 +82,12 @@ body {
   border-radius: 3px;
 }
 
+.result.progress {
+  display: block;
+  border-color: gray;
+  color: gray;
+}
+
 .result.success {
   display: block;
   border-color: darkgreen;
@@ -92,9 +98,4 @@ body {
   display: block;
   border-color: crimson;
   color: crimson;
-}
-
-.result.progress {
-  border-color: gray;
-  color: gray;
 }
