@@ -1,6 +1,14 @@
 "use strict";
-const el = (sel) => document.querySelector(sel);
+// helper function because it's tiresome
+// to type document.querySelector every time
+// could've gone for one liner
+//   const el = (sel) => document.querySelector(sel)
+// but func is more readable in this case, I think
+function el(sel) {
+  return document.querySelector(sel);
+}
 
+// our constants
 const form = el("#myForm");
 const fioEl = el("#fio");
 const emailEl = el("#email");
@@ -13,10 +21,10 @@ let refetch;
 
 // add and remove error class from inputs
 function toggleErrorClass(errors) {
-  const inputList = document.querySelectorAll("input");
+  const inputNodes = document.querySelectorAll("input");
 
-  inputList.forEach(input=> {
-    if (errors && errors.find(fld=>fld === input.name)) {
+  inputNodes.forEach(input => {
+    if (errors && errors.find(fld => fld === input.name)) {
       input.classList.add("error");
     } else {
       input.classList.remove("error");
@@ -24,11 +32,16 @@ function toggleErrorClass(errors) {
   });
 }
 
+// let's imitate our submit script with random numbers and stuff
 async function mockFetch(url) {
-  // let's imitate our submit script with random numbers and stuff
-  const rnd = Math.floor(Math.random() * 3);
   let data = {};
 
+  // generate random number (0-2)
+  function rnd() {
+    return Math.floor(Math.random() * 3);
+  }
+  
+  // generic fetch to reduce code dublication
   function get(file) {
     return fetch(`${url}/${file}.json`)
       .then(json => json.json())
@@ -52,6 +65,7 @@ async function mockFetch(url) {
   return data;
 }
 
+// MyForm obligatory object with methods
 const MyForm = {
   validate: function() {
     return {
@@ -59,6 +73,8 @@ const MyForm = {
       errorFields: []
     }
   },
+  // I couldn't figure out where this is gonna come in handy,
+  // but here it is
   setData: function(obj) {
     fioEl.value = obj.fio;
     emailEl.value = obj.email;
@@ -72,13 +88,13 @@ const MyForm = {
       phone: phoneEl.value
     }
   },
-  submit: function(event) {
-    event.preventDefault();
+  submit: function(e) {
+    e.preventDefault();
 
     // let's validate
     let getData = MyForm.getData();
     let validate = MyForm.validate();
-    let{errorFields,isValid} = validate;
+    let { errorFields, isValid } = validate;
 
     // check fio
     if (getData.fio.split(" ").length !== 3) {
@@ -104,17 +120,21 @@ const MyForm = {
       isValid = false;
     }
 
+    // add or remove classes from inputs
     toggleErrorClass(!isValid && errorFields);
     
+    // if isValid is true, disable button
+    // and go do our imitated fetch call
     if (isValid) {
       button.disabled = true;
 
       (function sendForm() {
         mockFetch(form.action)
         .then(data => {
-          // reset styles
+          // reset #resultContainer styles,
           result.classList.remove("error", "success", "progress");
 
+          // then make it great again (depending on data.status)
           switch (data.status) {
             case "success":
               result.classList.add("success");
