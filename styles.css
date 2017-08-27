@@ -50,7 +50,8 @@ body {
   border: 1px solid grey;
   border-radius: 3px;
 }
-.input.input--error {
+
+.input.error {
   border-color: red;
 }
 
@@ -70,6 +71,12 @@ body {
   text-transform: uppercase;
   border-radius: 5px;
   cursor: pointer
+}
+
+.button:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: gray;
 }
 
 /* result styles */
@@ -98,4 +105,10 @@ body {
   display: block;
   border-color: crimson;
   color: crimson;
+}
+
+/* misc */
+.input:focus,
+.button:focus {
+  outline: none;
 }

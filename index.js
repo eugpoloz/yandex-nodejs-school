@@ -11,15 +11,15 @@ const button = el("#submitButton");
 // variable for our future timeout
 let refetch;
 
+// add and remove error class from inputs
 function toggleErrorClass(errors) {
   const inputList = document.querySelectorAll("input");
-  const error = "input--error";
 
   inputList.forEach(input=> {
     if (errors && errors.find(fld=>fld === input.name)) {
-      input.classList.add(error);
+      input.classList.add("error");
     } else {
-      input.classList.remove(error);
+      input.classList.remove("error");
     }
   });
 }
@@ -119,10 +119,12 @@ const MyForm = {
             case "success":
               result.classList.add("success");
               result.innerHTML = "Success";
+              button.disabled = false;
             break;
             case "error":
               result.classList.add("error");
               result.innerHTML = data.reason;
+              button.disabled = false;
             break;
             case "progress":
             default:
@@ -131,8 +133,7 @@ const MyForm = {
               refetch = setTimeout(sendForm, data.timeout);
             break;
           }
-        })
-        .then(() => button.disabled = false);
+        });
       })();
     }
 
